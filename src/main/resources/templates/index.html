@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Galvanize Movie Database</title>
+</head>
+<body>
+
+<table width="100%" border="0" cellspacing="10" cellpadding="0">
+    <tr>
+        <td align="right"><a href="login" th:text="${session.screenname}?'Logged in as '+${session.screenname}:'Login...'"/></td>
+    </tr>
+    <tr>
+        <td  width="250px" align="center" nowrap><img src="gmdb.png" width="250" border="0"/></td>
+    </tr>
+    <tr><td height="50px" align="center"><font color="red" th:text="${errorMessage}"/> </td></tr>
+    <tr>'
+        <td align="center" width="100%"nowrap>
+            <form method="post" >
+             <input type="text" size="33%" placeholder="find a movie.." name="criteria">
+             <button type="submit">Submit</button>
+            </form>
+        </td>
+    </tr>
+    <tr><td height="50px"></td></tr>
+    <tr th:if="${movies != null && movies.size()>0}">
+        <td align="center" nowrap>
+            <table border="1" cellpadding="5" cellspacing="0" width="50%" >
+                <thead>
+                    <td align="center"></td><td align="center">Title</td><td align="center" width="60px">Rating</td>
+                </thead>
+                <tr th:each="movie : ${movies}">
+                    <td align="center" width="60px"><img width="50px" th:src="${movie.poster}"/></td>
+                    <td align="center"><a th:href="|/movie?i=${movie.imdbid}|" th:text="${movie.title}"/></td>
+                    <td align="center" width="60px" th:text="${movie.imdbRating}"/>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<table  width="100%" border="0" cellspacing="10" cellpadding="0">
+    <tr><td height="50px"/></tr>
+    <tr>
+        <td align="center">© Copyright 2019 Galvanize, Inc.</td>
+    </tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head >
+    <meta charset="UTF-8">
+    <title>Galvanize Movie Database</title>
+</head>
+<body>
+
+<table width="100%" border="0" cellspacing="10" cellpadding="0">
+    <tr>
+        <td  width="250px" align="center" nowrap><a href="index"><img src="gmdb.png" width="250" border="0" /></a></td>
+    </tr>
+    <tr><td height="50px"></td></tr>
+    <tr align="center">
+        <td>
+            <font color="red" th:text=${errorMessage}/>
+                <form method="post">
+                    <table >
+                        <tr>
+                            <td align="center">
+                                <h1 th:text="${password}!=null?'Your password is '+${password}:'Enter your email below to retrieve your password.'" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center">
+                                <input type="text" size="33%" placeholder="email" name="email"/>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td align="center">
+                                <button type="submit">Retrieve Password</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+        </td>
+    </tr>
+    <tr>
+        <td align="center"><a href="create-account">Sign Up</a></td>
+    </tr>
+    <tr><td height="50px"/></tr>
+    <tr>
+        <td align="center">© Copyright 2019 Galvanize, Inc.</td>
+    </tr>
+</table>
+</body>
+</html>

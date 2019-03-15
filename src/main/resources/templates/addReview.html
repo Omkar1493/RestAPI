@@ -1,0 +1,44 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Galvanize Movie Database</title>
+</head>
+<body>
+
+<table width="75%" border="0" cellspacing="10" cellpadding="0" align="center">
+    <tr>
+        <td align="right"><a href="login" th:text="${session.screenname}?'Logged in as '+${session.screenname}:'Login...'"/></td>
+    </tr>
+    <tr>
+        <td  width="250px" align="center" nowrap><a href="index"><img src="gmdb.png" width="250" border="0" /></a></td>
+    </tr>
+    <tr><td height="50px"></td></tr>
+    <tr>
+        <td>
+            <a href="index.html"><< Back to <i>Guardians of the Galaxy</i></a>
+        </td>
+    </tr>
+    <tr><td height="50px"></td></tr>
+    <tr>
+        <td align="center">
+            <h1>Enter your review for <i th:text="${movie.title}"/>below</h1>
+            <form method="post">
+                <input type="hidden" name="imdbid" th:value="${movie.imdbid}"/>
+                <input type="hidden" name="userid" th:value="${session.userid}"/>
+                <table>
+                    <tr><td><input type="text" name="reviewtitle" placeholder="Title your review"/></td></tr>
+                    <tr><td><textarea name="reviewbody" placeholder="Enter your review here..." rows="24" cols="80"></textarea></td></tr>
+                    <tr><td><button>Submit</button></td></tr>
+                </table>
+            </form>
+        </td>
+    </tr>
+    <tr><td height="50px"/></tr>
+    <tr>
+        <td align="center">© Copyright 2019 Galvanize, Inc.</td>
+    </tr>
+</table>
+</body>
+</html>

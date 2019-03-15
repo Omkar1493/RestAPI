@@ -1,0 +1,141 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Galvanize Movie Database</title>
+</head>
+<body>
+
+<table width="75%" border="0" cellspacing="10" cellpadding="0" align="center">
+    <tr>
+        <td align="right"><a href="login" th:text="${session.screenname}?'Logged in as '+${session.screenname}:'Login...'"/></td>
+    </tr>
+    <tr>
+        <td  width="250px" align="center" nowrap><img src="gmdb.png" width="250" border="0"</td>
+    </tr>
+    <tr><td height="50px"></td></tr>
+    <tr><td><a href="index"><< Back to Search</a></td></tr>
+    <tr align="center">
+        <td>
+            <table cellpadding="5" border="0" >
+                <tr>
+                    <td width="182px" height="268px" bgcolor="black"><img th:src="${movie.Poster}"/></td>
+                    <td align = "center" bgcolor="black"><font size="8em" color="white"><b th:text="${movie.title}"/></font><br/><font size="2em" color="white"><b th:text="${movie.Rated} +' | '+ ${movie.Runtime} +' | '+ ${movie.Genre} +' | '+ ${movie.Released}+' ('+ ${movie.Country}+')'" /></font></td>
+                    <td align="center" bgcolor="black"><img width="32px" src="star.png"/><font size="6em" color="white" th:text="${movie.imdbRating}"/><font color="white" th:utext="'/10<br/>'+${movie.imdbVotes}+'<br/>'"/><a th:href="'add-review?i='+${movie.imdbid}"><font color="yellow">Add Review</font></a></font></td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <h2>Overview</h2>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100px" colspan="1" align="right" valign="top">Plot Summary:</td>
+                    <td colspan="2" th:text="${movie.plot}" />
+                </tr>
+                <tr>
+                    <td width="100px" colspan="1" align="right" valign="top">Director:</td><td colspan="2" th:text="${movie.director}" />
+                </tr>
+                <tr>
+                    <td colspan="1" align="right" valign="top">Writers:</td><td colspan="2" th:text="${movie.writer}" />
+                </tr>
+                <tr>
+                    <td colspan="1" align="right" valign="top">Stars:</td><td colspan="2" th:text="${movie.actors}" />
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr><td><hr></td></tr>
+    <tr>
+        <td>
+            <table cellpadding="5">
+                <tr>
+                    <td colspan="3">
+                        <h2>Details</h2>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="182px" colspan="1" align="right" valign="top">Official Sites:</td>
+                    <td colspan="2" th:text="${movie.website}" />
+                </tr>
+                <tr>
+                    <td align="right" valign="top">Country:</td>
+                    <td th:text="${movie.country}" />
+                </tr>
+                <tr>
+                    <td align="right" valign="top">Language:</td>
+                    <td th:text="${movie.language}" />
+                </tr>
+                <tr>
+                    <td align="right" valign="top">Type:</td>
+                    <td th:text="${movie.type}" />
+                </tr>
+            </table>
+        </td>
+    </tr>
+
+    <tr><td><hr></td></tr>
+    <tr>
+        <td>
+            <table cellpadding="5">
+                <tr>
+                    <td colspan="3">
+                        <h2>Production</h2>
+                    </td>
+                </tr>
+                <tr >
+                    <td width="182px" colspan="1" align="right" valign="top">Production Company: </td>
+                    <td colspan="2" th:text="${movie.Production}"/>
+                </tr>
+                <tr>
+                    <td align="right" valign="top">Release Date:</td>
+                    <td th:text="${movie.Released}"/>
+                </tr>
+                <tr>
+                    <td align="right" valign="top">DVD Release Date:</td>
+                    <td th:text="${movie.DVD}" />
+                </tr>
+                <tr>
+                    <td align="right" valign="top">Box Office:</td>
+                    <td th:text="${movie.BoxOffice}" />
+                </tr>
+                <tr>
+                    <td align="right" valign="top">Awards:</td>
+                    <td th:text="${movie.Awards}" />
+                </tr>
+            </table>
+        </td>
+    </tr>
+
+    <tr><td><hr></td></tr>
+    <tr>
+        <td>
+            <table width="100%">
+                <tr>
+                    <td colspan="3">
+                        <h2>Reviews</h2>
+                    </td>
+                </tr>
+                <th:block th:each="review : ${movie.reviews}">
+                    <tr>
+                        <td colspan="4" valign="top"><b th:text="${review.reviewTitle}" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" valign="top"><font size="1.5em"><b th:text="'By: '+${review.user.screenName}" /></font></td>
+                        <td colspan="2" align="right"><font size="1.5em"><b th:text="${#dates.format(review.lastUpdated, 'dd-MMMM-yyyy')}" /></font></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" valign="top" th:text="${review.reviewText}" />
+                    </tr>
+                    <tr><td height="10">&nbsp;</td></tr>
+                </th:block>
+            </table>
+        </td>
+    </tr>
+    <tr><td height="50px">&nbsp;</td></tr>
+    <tr>
+        <td align="center">© Copyright 2019 Galvanize, Inc.</td>
+    </tr>
+</table>
+</body>
+</html>
