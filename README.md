@@ -26,6 +26,8 @@ Before the architecture committee will allow new features to be added they are r
 - Security needs to be fixed so that it uses JWT/Spring Security with hashed passwords stored in a database.
 - Users will need to verify that their email address is valid.
 
+## Notes
+Test data is contained in the csv files. These are formatted for import using MySQL Workbench
 
 
 
