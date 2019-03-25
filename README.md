@@ -30,5 +30,14 @@ Before the architecture committee will allow new features to be added they are r
 Test data is contained in the csv files. These are formatted for import using MySQL Workbench
 
 
+In order to build this project, you must have the Lombok plugin installed to process annotations before compiling the code.
 
+If you are using IDEA, you can find the plugin in the marketplace under Preferences > Plugins
+When running from IDEA, you can enable annotation processing under Preferences > Build, Execution, Deployment > Compiler > Annotation Processors by checking the box labeled 'Enable annotation processing'
+
+Alternatively, if you are building from the command line using gradle, add the following two lines under the dependencies section in your build.gradle file in the project:
+```
+compileOnly 'org.projectlombok:lombok:1.18.6'
+annotationProcessor 'org.projectlombok:lombok:1.18.6'
+```
 
