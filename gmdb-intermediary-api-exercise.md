@@ -1,11 +1,11 @@
-#GMDB Intermediary API Exercise
-##Intro
+# GMDB Intermediary API Exercise
+## Intro
 In its initial state, the GMDB monolith is a tightly coupled MVC application.
 All of the endpoints in the single controller (GmdbController) are currently responding with server-rendered templates in HTML.
 Before we can begin refactoring the UI of this application into a Single Page App, we must first create a ReSTful API that can serve only the JSON data needed by the UI. 
 As tempting as it may be, the goal of this exercise is **NOT** to refactor existing functionality or add anything new, but rather provide JSON endpoints for **what currently exists** in the GMDB app.
 
-##Exercise
+## Exercise
 Your goal in this exercise will be to create a new controller with the following endpoints:
 - `POST /api/login` should receive login credentials through the request body. Validate the credentials using the `GmdbService.validateUser()` method. Assuming that the credentials are valid, return the user given by the service as JSON. Upon successful login, this endpoint should also set the following session Attributes:
   ```java
