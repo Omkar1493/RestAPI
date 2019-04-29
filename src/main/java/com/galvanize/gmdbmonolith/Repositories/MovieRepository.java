@@ -10,4 +10,5 @@ import java.util.ArrayList;
 public interface MovieRepository extends CrudRepository<Movie, Long> {
     ArrayList<Movie> findMovieModelsByTitleContains(String criteria);
     Movie findMovieModelByImdbid(String imdbId);
+//    boolean deleteMovieByImdbid(String imdbid);
 }

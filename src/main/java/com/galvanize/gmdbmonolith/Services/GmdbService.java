@@ -51,7 +51,12 @@ public class GmdbService {
     }
 
     public Movie getMovie(String imdbId){
-        return movieRepository.findMovieModelByImdbid(imdbId);
+            return movieRepository.findMovieModelByImdbid(imdbId);
+    }
+
+
+    public void deleteMoive(Long movieId){
+        movieRepository.deleteById(movieId);
     }
 
     public Movie addReview(String imdbId, Long userId, String reviewTitle, String reviewBody){

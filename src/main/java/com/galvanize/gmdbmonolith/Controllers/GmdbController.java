@@ -109,13 +109,13 @@ public class GmdbController {
                                     RedirectAttributes redirectAttributes,
                                     ModelMap model,
                                     @RequestParam(value="imdbid", required= true)
-                                    String imdbId,
+                                            String imdbId,
                                     @RequestParam(value="userid", required= true)
-                                    Long userId,
+                                            Long userId,
                                     @RequestParam(value="reviewtitle", required = true)
-                                    String reviewTitle,
+                                            String reviewTitle,
                                     @RequestParam(value="reviewbody", required = true)
-                                    String reviewBody){
+                                            String reviewBody){
         if(httpSession.getAttribute("userid")==null){
             redirectAttributes.addFlashAttribute("errorMessage", "You must be logged in to add a review.");
             return "redirect:index";
